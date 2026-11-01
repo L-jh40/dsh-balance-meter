@@ -12,8 +12,7 @@ node_modules/
 # pnpm 存储
 .pnpm-store/
 
-# 安装期自动生成的 workspace/lock 产物（本包在 DSH profile 中通过 link 安装）
-pnpm-lock.yaml
+# 本包不是 pnpm workspace；workspace 文件是 profile 安装期产物
 pnpm-workspace.yaml
 
 # 本地备份（.bak-<时间戳>-<原因>）
