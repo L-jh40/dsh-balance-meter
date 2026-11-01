@@ -1,0 +1,113 @@
+/* dsh-balance-meter input selector chip styles. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--dsh-color-border, rgba(128, 128, 128, 0.35));
+  border-radius: 999px;
+  background: var(--dsh-color-surface, transparent);
+  color: var(--dsh-color-text, inherit);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  border-color: var(--dsh-color-accent, rgba(80, 160, 255, 0.7));
+}
+
+.chipOpen {
+  border-color: var(--dsh-color-accent, rgba(80, 160, 255, 0.7));
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dsh-color-danger, #e5534b);
+  flex: none;
+}
+
+.dotOk {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dsh-color-success, #2da44e);
+  flex: none;
+}
+
+.details {
+  position: absolute;
+  /* 向上弹出：chip 位于 composer 底部，向下展开会被视口截断，
+     向上展开让用户在查看上方对话记录时也能同时看到实时消耗。 */
+  bottom: calc(100% + 6px);
+  left: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 140px;
+  padding: 6px 8px;
+  border: 1px solid var(--dsh-color-border, rgba(128, 128, 128, 0.35));
+  border-radius: 6px;
+  background: var(--dsh-color-surface-elevated, #1f1f1f);
+  color: var(--dsh-color-text, inherit);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rowRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sep {
+  opacity: 0.45;
+}
+
+.cost {
+  opacity: 0.85;
+}
+
+.costRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--dsh-color-border, rgba(128, 128, 128, 0.25));
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+/* 峰谷时段行：作为详情第一行时不带上边框，分隔线移到其下方
+   （与下方「余额」行之间）。 */
+.bandRow {
+  border-top: none;
+  border-bottom: 1px solid var(--dsh-color-border, rgba(128, 128, 128, 0.25));
+  padding-top: 0;
+  padding-bottom: 4px;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+/* 手机访问方式（lan-gate 注入 data-lan-device="phone"）：
+   详情面板靠右对齐（chip 右缘），限宽避免超出屏幕坐标。 */
+:global(html[data-lan-device="phone"]) .details {
+  left: auto;
+  right: 0;
+  max-width: calc(100vw - 16px);
+  width: max-content;
+  min-width: 0;
+}
